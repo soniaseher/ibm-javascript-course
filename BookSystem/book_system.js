@@ -10,7 +10,8 @@ function addBook() {
             name: bookName,
             authorName: authorName,
             bookDescription: bookDescription,
-            pagesNumber: pagesNumber
+            pagesNumber: pagesNumber,
+            button: `<button onclick="deletebook()" id="delete-btn">Delete</button>`
         };
         books.push(book);
         showbooks();
@@ -27,7 +28,8 @@ function showbooks() {
         <p><strong>Book Name: </strong>${book.name}</p>
         <p><strong>Author Name: </strong>${book.authorName}</p>
         <p><strong>Book Description: </strong>${book.bookDescription}</p>
-        <p><strong>No of Pages: </strong>${book.pagesNumber}</p>`
+        <p><strong>No of Pages: </strong>${book.pagesNumber}</p>
+        ${book.button}`
     );
     document.getElementById('books').innerHTML = booksDiv.join('');
 }
@@ -39,3 +41,12 @@ function clearInputs() {
     document.getElementById('bookDescription').value = '';
     document.getElementById('pagesNumber').value = '';
 }
+// delete book 
+function deletebook() {
+    for(let i=0; i<=books.length; i++) {
+        books.splice(i, 1);
+    }
+    showbooks();
+}
+const deleteBtn = document.getElementById('delete-btn');
+    deleteBtn.addEventListener('click', deleteBtn);
